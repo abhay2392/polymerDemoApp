@@ -1,0 +1,83 @@
+<link rel="import" href="../../polymer/polymer.html">
+
+
+<dom-module id="users-list">
+    <template>
+
+        <div class="filterPanel">Filter By Name: <input type="text" value="{{userName::input}}"/> </div>
+
+  <template id="usersTemplate" is="dom-repeat" items="{{newUsers}}">
+    <style>
+      :host {
+        font-family: sans-serif;
+      };
+
+      div{
+          border: 1px solid rgb(146, 135, 135);
+          padding: 10px;
+          width:90%;
+          margin-left: auto;
+          margin-right: auto;
+      }
+      span{
+          min-width: 20%;
+      }
+      .contact
+      {
+          color:blue;
+          float: right;
+
+      }
+
+    </style>
+
+    <div><span>{{item.name}}</span><span class="contact">{{item.contact}}</span></div>
+
+  </template>
+  </template>
+
+
+  <script>
+    Polymer({
+      is: "users-list",
+
+    ready:function(){
+
+this.newUsers=this.users;
+    },
+
+    properties: {
+        users:{
+            type:Object,
+            value:[
+            {name:"Abhay",contact:"1234567890"},
+            {name:"Thato",contact:"1234567890"},
+            {name:"Tejal",contact:"1234567890"},
+            {name:"Daniel",contact:"1234567890"},
+            {name:"Sean",contact:"1234567890"}
+        ]
+        },
+          userName: {
+            type: String,
+
+          }
+        },
+        // Each item of observers array is a method name followed by
+        // a comma-separated list of one or more paths.
+        observers: [
+          'userNameChanged(userName)'
+        ],
+        // Each method referenced in observers must be defined in
+        // element prototype. The argument to the method is the new value
+        // of the sub-property.
+        userNameChanged: function (val) {
+            this.newUsers = this.users.filter(
+                function (user) {
+                    var patt = new RegExp(val,"i");
+                    return patt.test(user.name);
+                }
+            );
+        },
+    });
+  </script>
+</dom-module>

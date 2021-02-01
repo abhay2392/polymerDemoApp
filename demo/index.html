@@ -1,0 +1,33 @@
+<head>
+  <!-- import latest release version of all components from polygit -->
+  <base href="">
+  <script src="../../webcomponentsjs/webcomponents-lite.js"></script>
+  <link rel="import" href="../../app-layout/app-toolbar/app-toolbar.html">
+  <link rel="import" href="icon-toggle-demo.html">
+  <link rel="import" href="users-list.html">
+
+  <!-- sample-content included for demo purposes only -->
+  <!-- <link rel="import" href="app-layout/demo/sample-content.html"> -->
+
+  <style is="custom-style">
+    body {
+      /* No margin on body so toolbar can span the screen */
+      margin: 0;
+    }
+    app-toolbar {
+      /* Toolbar is the main header, so give it some color */
+      background-color: #1E88E5;
+      font-family: 'Roboto', Helvetica, sans-serif;
+      color: white;
+      --app-toolbar-font-size: 24px;
+    }
+  </style>
+</head>
+<body>
+  <app-toolbar>
+    <div main-title>User Details</div>
+  </app-toolbar>
+ <!-- <icon-toggle-demo></icon-toggle-demo> -->
+  <users-list></users-list>
+</body>
+
