@@ -3,33 +3,46 @@
 
 <dom-module id="users-list">
     <template>
+        <style>
+            :host {
+              font-family: sans-serif;
+            };
+            .filterPanel
+            {
+                width:400px;
 
+                border:0px;
+                margin: 10px 100px 10px 50px;
+            }
+            .headers
+            {
+                font-weight: bold;
+            }
+
+            div{
+                border: 1px solid rgb(146, 135, 135);
+                padding: 10px;
+                width:90%;
+                margin-left: auto;
+                margin-right: auto;
+            }
+            span{
+                min-width: 20%;
+            }
+
+            .contact
+            {
+                color:blue;
+                float: right;
+
+            }
+
+          </style>
         <div class="filterPanel">Filter By Name: <input type="text" value="{{userName::input}}"/> </div>
+        <div class="headers"><span class="headers">User</span><span class="contact">Contact</span></div>
 
   <template id="usersTemplate" is="dom-repeat" items="{{newUsers}}">
-    <style>
-      :host {
-        font-family: sans-serif;
-      };
 
-      div{
-          border: 1px solid rgb(146, 135, 135);
-          padding: 10px;
-          width:90%;
-          margin-left: auto;
-          margin-right: auto;
-      }
-      span{
-          min-width: 20%;
-      }
-      .contact
-      {
-          color:blue;
-          float: right;
-
-      }
-
-    </style>
 
     <div><span>{{item.name}}</span><span class="contact">{{item.contact}}</span></div>
 
